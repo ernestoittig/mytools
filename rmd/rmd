@@ -1,0 +1,3 @@
+#!/bin/sh
+file=$(readlink -f "$1")
+echo "require(rmarkdown); render('$file')" | R -q --vanilla
