@@ -1,1 +1,4 @@
 #!/bin/sh
+dirname=dirname $(readlink -f $1)
+cp "$dirname/rmd" "$HOME/.local/bin/rm"
+cp "$dirname/rmd.1" "/usr/local/share/man/man1"
