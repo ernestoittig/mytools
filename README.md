@@ -5,3 +5,5 @@
 A modulo thingy written in C
 #### [rmd](https://raw.githubusercontent.com/ernestoittig/mytools/master/rmd/install)
 A rmarkdown compile script
+#### Fish scripts and functions
++ function [fish_prompt.fish](https://raw.githubusercontent.com/ernestoittig/mytools/master/fish/fish_prompt.fish)
