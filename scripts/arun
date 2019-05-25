@@ -1,0 +1,5 @@
+#!/bin/sh
+# run this command in background, without stdout or stderr
+
+$@ > /dev/null 2> /dev/null &
+

@@ -1,0 +1,7 @@
+#!/bin/sh
+# Google the arguments
+
+url="google.com/search?q=$(echo $@ | sed 's/ /+/g')"
+
+arun x-www-browser $url
+

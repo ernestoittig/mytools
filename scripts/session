@@ -1,0 +1,29 @@
+#!/bin/sh
+
+# dmenu thingy for session managment
+# due to different DEs, adapt LOGOUT command to your DE's session ens command:
+# Examples:
+# xfce4-session-logout
+# gnome-session-quit
+
+LOGOUT_COMMAND=xfce4-session-logout
+
+options='suspend
+logout
+poweroff
+reboot'
+
+result=$(printf "$options" | dmenu)
+
+case $result in
+    "")
+        echo empty ;;
+    logout)
+        $LOGOUT_COMMAND ;;
+    poweroff)
+        systemctl poweroff ;;
+    reboot)
+        systemctl reboot ;;
+    suspend)
+        systemctl suspend ;;
+esac

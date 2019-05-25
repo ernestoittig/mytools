@@ -1,0 +1,4 @@
+#!/bin/sh
+# Change the current volume
+
+pactl -- set-sink-volume @DEFAULT_SINK@ $1

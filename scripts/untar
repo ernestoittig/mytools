@@ -1,0 +1,4 @@
+#!/bin/sh
+# Shorthand for extracting tar files
+
+tar -xf $1
