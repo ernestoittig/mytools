@@ -12,7 +12,7 @@ process_line()
         COMMAND=$(printf "$LINE" | awk '{$1=""; $2=""; print $0}' )
     fi
 
-    if [ -z $($COMMAND) ]; then
+    if [ ! -e "$($COMMAND 2> /dev/null)" ]; then
         if [ $(echo "$FOUND" | grep -c ":\?"$NAME":\?") -eq 0 ]; then
             printf "[1;38;5;9mMissing dep %s[0m\n" $NAME
         fi
