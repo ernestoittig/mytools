@@ -2,3 +2,6 @@
 # Shorthand for extracting tar files
 
 tar -xf $1
+# *tool_dependencies
+# tar which tar
+# tool_dependencies*

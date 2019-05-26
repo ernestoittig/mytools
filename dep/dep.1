@@ -1,0 +1,25 @@
+.\" Manpage for dep.
+.TH DEP 1 "2019-05-25" "GNU" "General Commands Manual"
+.SH NAME
+dep \- simple dependency checker
+.SH SYNOPSIS
+dep 
+.I FILES
+.SH DESCRIPTION
+dep is a simple multifile dependency checker with a basic syntax.
+.SH SYNTAX
+dep is called within a file by writing
+.BR *tool_dependencies
+
+\[char46]..
+
+.BR tool_dependencies*
+
+Each entry should be written like this:
+
+.BR ENTRY_NAME 
+.BR ENTRY_COMMAND
+
+ENTRY_COMMAND should be a command that expands an empty string if the entry is not in the the system and expands a non-empty string when it is. For example, which.
+.SH AUTHOR
+Ernesto Ittig

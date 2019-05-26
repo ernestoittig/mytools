@@ -1,0 +1,57 @@
+#!/bin/sh
+
+FOUND=""
+
+process_line()
+{
+    LINE=$1
+    NAME=$(printf "$LINE" | awk '{print $1}')
+    COMMAND=$(printf "$LINE" | awk '{$1=""; print $0}' )   
+    if [ $(printf "$LINE" | awk '{print $1}') = '#' ]; then
+        NAME=$(printf "$LINE" | awk '{print $2}')
+        COMMAND=$(printf "$LINE" | awk '{$1=""; $2=""; print $0}' )
+    fi
+
+    if [ -z $($COMMAND) ]; then
+        if [ $(echo "$FOUND" | grep -c ":\?"$NAME":\?") -eq 0 ]; then
+            printf "[1;38;5;9mMissing dep %s[0m\n" $NAME
+        fi
+        FOUND=$FOUND:$NAME
+    fi
+}
+main()
+{
+#echo in file/directory $1
+if [ -z $1 ]; then
+    echo Please specify a file
+    exit 1
+fi
+
+if [ -d $1 ]; then
+#    echo Is a directory
+    return
+fi
+
+if [ $(echo "$1" | grep -c 'dep.1') -ne 0 ]; then return; fi
+
+L_NUM=$(grep -na 'tool_dependencies' $1 | grep -o '[[:digit:]]\+')
+N_MATCH=$(grep -nac 'tool_dependencies' $1)
+
+if [ $N_MATCH -eq 0 ]; then return; fi
+
+if [ $N_MATCH -ne 2 ]; then
+    echo Invalid syntax
+    return
+fi
+
+BEGIN_L=$(printf "$L_NUM" | awk 'NR==1')
+END_L=$(printf "$L_NUM" | awk 'NR==2')
+
+n=$(($BEGIN_L+1))
+while [ $n -lt $END_L ]; do
+    process_line "$(sed -n $n'p' $1)"
+    n=$(($n+1))
+done
+}
+for x; do main $x; done
+

@@ -80,3 +80,7 @@ function fish_prompt --description 'Write out the prompt'
         #end
     #echo -sn (set_color normal) "$suffix "
 end
+# *tool_dependencies
+# fish which fish
+# git which git
+# tool_dependencies*

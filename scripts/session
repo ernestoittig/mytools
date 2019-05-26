@@ -27,3 +27,7 @@ case $result in
     suspend)
         systemctl suspend ;;
 esac
+# *tool_dependencies
+# dmenu which dmenu
+# systemctl which systemctl
+# tool_dependencies*
