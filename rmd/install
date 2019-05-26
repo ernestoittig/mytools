@@ -1,3 +1,4 @@
 #!/bin/sh
 curl -fsS "https://raw.githubusercontent.com/ernestoittig/mytools/master/rmd/rmd"  > "$HOME/.local/bin/rmd"
-curl -fsS "https://raw.githubusercontent.com/ernestoittig/mytools/master/rmd/rmd.1" > "/usr/local/share/man/man1/rmd.1"
+chmod +x $HOME/.local/bin/rmd
+sudo sh -c 'curl -fsS "https://raw.githubusercontent.com/ernestoittig/mytools/master/rmd/rmd.1" > "/usr/local/share/man/man1/rmd.1"'

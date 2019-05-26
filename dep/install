@@ -1,3 +1,4 @@
 #!/bin/sh
 curl -fsS "https://raw.githubusercontent.com/ernestoittig/mytools/master/dep/dep"  > "$HOME/.local/bin/dep"
-curl -fsS "https://raw.githubusercontent.com/ernestoittig/mytools/master/dep/dep.1" > "/usr/local/share/man/man1/dep.1"
+chmod +x $HOME/.local/bin/dep
+sudo sh -c 'curl -fsS "https://raw.githubusercontent.com/ernestoittig/mytools/master/dep/dep.1" > "/usr/local/share/man/man1/dep.1"'
