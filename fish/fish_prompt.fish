@@ -62,6 +62,24 @@ function fish_prompt --description 'Write out the prompt'
     test $lasts -ne 0
     and _prompt_wrapper $wcol EC $lasts
 
+    #mode
+    #disable normal fish_mode_prompt by doing:
+    #touch ~/.config/fish/functions/fish_mode_prompt.fish #or
+    #touch /etc/fish/functions/fish_mocde_prompt.fish
+    if [ $fish_key_bindings = fish_vi_key_bindings ]
+        switch $fish_bind_mode
+            case default
+                _prompt_wrapper brred '' N
+            case insert
+                _prompt_wrapper green '' I
+            case replace_one
+                _prompt_wrapper green '' R
+            case visual
+                _prompt_wrapper brmagenta '' V
+        end
+    end
+    
+
     #new line
     echo
     
